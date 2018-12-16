@@ -1,0 +1,11 @@
+{
+    "hostname": "dev",
+    "api": {
+        "version" : 1,
+        "app_path": "/api/v1"
+    },
+    "spaceXAPI": {
+        "host": "https://api.spacexdata.com/v2/"
+    },
+    "ip": "localhost"
+}
