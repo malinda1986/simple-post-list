@@ -3,10 +3,18 @@ const { ApiPrefix } = Constant
 
 const database = [
   {
-    id: '2',
-    name: 'Launches',
-    icon: 'rocket',
-    route: '/launches',
+    id: '3',
+    name: 'Posts',
+    icon: 'message',
+    route: '/posts',
+  },
+  {
+    id: '4',
+    menuParentId: '-1',
+    breadcrumbParentId: '3',
+    name: 'View Post',
+    icon: 'bars',
+    route: '/posts/:id',
   },
 ]
 module.exports = {

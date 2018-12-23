@@ -22,7 +22,9 @@ export default function request(options) {
 
     const match = pathToRegexp.parse(url)
     url = pathToRegexp.compile(url)(data)
-    if(url === '/api/v1/search'){
+    const urlPaths = url.split('/');
+    //console.log('url======', url.split('/'))
+    if(urlPaths[3] === 'posts'){
       domain = 'http://localhost:8080'
     }
  
@@ -31,7 +33,7 @@ export default function request(options) {
         delete cloneData[item.name]
       }
     }
-    url = domain + url
+    url = domain + url 
   } catch (e) {
     message.error(e.message)
   }

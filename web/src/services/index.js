@@ -27,11 +27,46 @@ for (const key in api) {
   APIFunction[key] = gen(api[key])
 }
 
-APIFunction.queryLaunches = params => {
+
+APIFunction.queryPosts = params => {
 
   return request({
-    url: `${apiPrefix}/search`,
+    url: `${apiPrefix}/posts`,
     data: params,
+  })
+}
+
+APIFunction.findPost = params => {
+
+  return request({
+    url: `${apiPrefix}/posts/:id`,
+    data: params,
+  })
+}
+
+APIFunction.queryComments = params => {
+
+  return request({
+    url: `${apiPrefix}/posts/:id/comment`,
+    data: params,
+  })
+}
+
+APIFunction.addPost = params => {
+
+  return request({
+    url: `${apiPrefix}/posts`,
+    data: params,
+    method: 'post'
+  })
+}
+
+APIFunction.addComment = params => {
+
+  return request({
+    url: `${apiPrefix}/posts/:id/comment`,
+    data: params,
+    method: 'post'
   })
 }
 

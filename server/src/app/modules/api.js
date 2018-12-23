@@ -1,11 +1,7 @@
 const express = require('express');
-const swaggerUi = require('swagger-ui-express');
-
-const spaceXHandler = require('./spacex');
+const postHandler = require('./posts');
 const api = require('../api');
 const config = require('../config');
-
-const swaggerDocument = require('../doc/api.json');
 
 const {app_path} = config.get('api');
 
@@ -15,9 +11,7 @@ const apiRoutes = function(middleware) {
         const {api: {cors}} = middleware;
         // enable CORS
         router.use(cors());
-        router.use(`${app_path}/`, spaceXHandler.routes(api.http));
-
-        router.use(`${app_path}/apidoc`, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+        router.use(`${app_path}/`, postHandler.routes(api.http));
 
         return router;
     } catch (e) {

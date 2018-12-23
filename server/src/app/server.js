@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const config = require('./config');
+const mongo = require('./db/mongo');
 
 const Server = {
     /**
@@ -26,6 +27,16 @@ const Server = {
 
             this.httpServer.on('listening', () => {
                 this.logStartMessages();
+                try{
+                    mongo().then( con => {
+                        this.logDBMessages(con)
+                        resolve(this);
+                    }).catch(error => {
+                        return new Error(error);
+                    });
+                }catch (e){
+                    console.log(e)
+                }
             });
         });
     },

@@ -1,4 +1,4 @@
-# SpaceX
+# Post and Comments app with React Node and MongoDB
 
 ## How to run
 

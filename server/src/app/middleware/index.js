@@ -6,12 +6,15 @@ const routes = require('../modules');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const nocache = require('nocache');
 
 const setupMiddleware = function(app) {
     // compress
     app.use(compress());
     //helmet
     app.use(helmet());
+
+    app.use(nocache());
 
     // set up our express application
     app.use(morgan('dev')); // log every request to the console

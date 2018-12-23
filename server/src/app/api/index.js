@@ -8,6 +8,9 @@ const _ = require('lodash');
  */
 const http = function http(apiMethod, auth) {
     return function apiHandler(req, res, next) {
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+        res.header('Expires', '-1');
+        res.header('Pragma', 'no-cache');
         const {body, file, query, params, context, user, headers} = req;
         // We define 2 properties for using as arguments in API calls:
        // console.log(req)

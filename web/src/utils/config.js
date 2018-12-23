@@ -1,8 +1,8 @@
 const socketPath = 'http://localhost:8080';
 
 module.exports = {
-  siteName: 'SpaceX Admin',
-  copyright: 'SpaceX  © 2018 ',
+  siteName: 'Moberries Admin',
+  copyright: 'Moberries  © 2018 ',
   logoPath: '/logo.svg',
   apiPrefix: '/api/v1',
   fixedHeader: true, // sticky primary layout header
