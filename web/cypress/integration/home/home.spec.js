@@ -7,10 +7,10 @@ describe('SpaceX Home', function() {
           password: 'admin',
       })
       // now that we're logged in, we can visit
-      cy.visit('http://localhost:8000/en/launches')
+      cy.visit('http://localhost:8000/en/posts')
   
       // Assert that el add note is visible
-      cy.contains('Upcoming launches').should('be.visible')              
+      cy.contains('Add Post').should('be.visible')              
   
     })
 
