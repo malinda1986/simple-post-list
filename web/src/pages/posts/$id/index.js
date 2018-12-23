@@ -19,8 +19,7 @@ class PostDetail extends PureComponent {
     const { post , dispatch, match, location} = this.props
     const { query, pathname } = location
 
-    console.log('handle refresh===', this.props)
-    let { currentItem, showLoading, commentPage, commentList, modalVisible } = post
+    let { currentItem = {}, showLoading, commentPage, commentList = [], modalVisible } = post
     
     const IconText = ({ type, text }) => (
         <span>
@@ -29,7 +28,7 @@ class PostDetail extends PureComponent {
     );
 
 
-
+    console.log('comments------', commentList)
 
   
     const onLoadMore = () => {
@@ -38,7 +37,7 @@ class PostDetail extends PureComponent {
           type: 'post/loadComment',
           payload: {
             page: commentPage,
-            id: commentList[0].id
+            id: match.params.id,
           },
         })
       window.dispatchEvent(new Event('resize'));
@@ -124,7 +123,15 @@ class PostDetail extends PureComponent {
           payload: data,
         }).then(() => {
          // handleRefresh()
-         dispatch({ type: 'find', payload: { id: match.params.id } })
+         dispatch({ type: 'post/find', payload: { id: match.params.id } })
+         dispatch({
+          type: 'post/loadComment',
+          payload: {
+            page: commentPage,
+            id:  match.params.id,
+            forceReset: true
+          },
+        })
         })
       },
       onCancel() {
@@ -146,7 +153,7 @@ class PostDetail extends PureComponent {
          {modalVisible === true ? <CommentModal {...modelProps}/> : ''}
         {AddItem()}
         <div >{PostContent()}</div>
-        <div >{commentList.length > 1 ? CommentContent(): ''}</div>
+        <div >{commentList.length > 0 ? CommentContent(): ''}</div>
       </Page>
     )
   }

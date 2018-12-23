@@ -106,8 +106,8 @@ export default modelExtend(pageModel, {
       })
 
       const data = yield call(findPost, payload)
-      
-      if (data.success) {
+      console.log('fine post-----', data)
+      if (data) {
         yield put({
           type: 'setPostItem',
           payload: {
@@ -131,6 +131,16 @@ export default modelExtend(pageModel, {
           showLoading: true,
         },
       })
+      if(payload.forceReset){
+        const resetObj = {
+          commentList: [],  commentPage:1
+        };
+        
+        yield put({
+          type: 'resetState',
+          payload: resetObj
+        })
+      }
       const comments = yield call(queryComments, payload)
       if (comments.success) {
         yield put({

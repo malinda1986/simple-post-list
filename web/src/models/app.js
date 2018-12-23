@@ -19,10 +19,10 @@ export default {
     },
     routeList: [
       {
-        id: '2',
-        icon: 'rocket',
-        name: 'Launches',
-        router: '/launches',
+        id: '3',
+        name: 'Posts',
+        icon: 'message',
+        route: '/posts',
       },
     ],
     locationPathname: '',
@@ -106,7 +106,7 @@ export default {
         })
         if (pathMatchRegexp('/login', window.location.pathname)) {
           router.push({
-            pathname: '/launches',
+            pathname: '/posts',
           })
         }
       } else if (queryLayout(config.layouts, locationPathname) !== 'public') {
@@ -129,10 +129,10 @@ export default {
             permissions: { visit: [] },
             menu: [
               {
-                id: '2',
-                icon: 'tocket',
-                name: 'Launches',
-                router: '/launches',
+                id: '3',
+                name: 'Posts',
+                icon: 'message',
+                route: '/posts',
               },
             ],
           },
